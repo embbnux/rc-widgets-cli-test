@@ -12,6 +12,10 @@ import { LoginPage } from '@ringcentral-integration/widgets/containers/LoginPage
 import AlertContainer from '@ringcentral-integration/widgets/containers/AlertContainer';
 import { ConnectivityBadgeContainer } from '@ringcentral-integration/widgets/containers/ConnectivityBadgeContainer';
 
+import ComposeTextPage from '@ringcentral-integration/widgets/containers/ComposeTextPage';
+import { ConversationsPage } from '@ringcentral-integration/widgets/containers/ConversationsPage';
+import { ConversationPage } from '@ringcentral-integration/widgets/containers/ConversationPage';
+
 import MainView from '../MainView';
 import AppView from '../AppView';
 
@@ -59,6 +63,29 @@ const App = ({ phone, hostingUrl }) => {
                 )}
               />
               <Route path="/settings/region" component={RegionSettingsPage} />
+              <Route
+                path="/composeText"
+                component={ComposeTextPage}
+              />
+              <Route
+                path="/conversations/:conversationId"
+                component={routerProps => (
+                  <ConversationPage
+                    params={routerProps.params}
+                    showContactDisplayPlaceholder={false}
+                    showGroupNumberName
+                  />
+                )}
+              />
+              <Route
+                path="/messages"
+                component={() => (
+                  <ConversationsPage
+                    showContactDisplayPlaceholder={false}
+                    showGroupNumberName
+                  />
+                )}
+              />
             </Route>
           </Route>
         </Router>

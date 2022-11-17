@@ -33,6 +33,24 @@ import { RegionSettingsUI } from '@ringcentral-integration/widgets/modules/Regio
 import { RouterInteraction } from '@ringcentral-integration/widgets/modules/RouterInteraction';
 import { SettingsUI } from '@ringcentral-integration/widgets/modules/SettingsUI';
 
+import { ExtensionPhoneNumber } from '@ringcentral-integration/commons/modules/ExtensionPhoneNumberV2';
+import { ExtensionDevice } from '@ringcentral-integration/commons/modules/ExtensionDeviceV2';
+import { ForwardingNumber } from '@ringcentral-integration/commons/modules/ForwardingNumberV2';
+import { NumberValidate } from '@ringcentral-integration/commons/modules/NumberValidate';
+import { CompanyContacts } from '@ringcentral-integration/commons/modules/CompanyContactsV2';
+import { ContactSearch } from '@ringcentral-integration/commons/modules/ContactSearchV2';
+import Call from '@ringcentral-integration/commons/modules/Call';
+import { CallingSettings } from '@ringcentral-integration/commons/modules/CallingSettingsV2';
+import { Softphone } from '@ringcentral-integration/commons/modules/Softphone';
+import { Ringout } from '@ringcentral-integration/commons/modules/RingoutV2';
+import { MessageStore } from '@ringcentral-integration/commons/modules/MessageStoreV2';
+import { Conversations } from '@ringcentral-integration/commons/modules/ConversationsV2';
+import { ConversationsUI } from '@ringcentral-integration/widgets/modules/ConversationsUI';
+import { ConversationUI } from '@ringcentral-integration/widgets/modules/ConversationUI';
+import { MessageSender } from '@ringcentral-integration/commons/modules/MessageSenderV2';
+import { ComposeText } from '@ringcentral-integration/commons/modules/ComposeTextV2';
+import { ComposeTextUI } from '@ringcentral-integration/widgets/modules/ComposeTextUI';
+
 // user Dependency Injection with decorator to create a phone class
 // https://github.com/ringcentral/ringcentral-js-integration-commons/blob/master/docs/dependency-injection.md
 @ModuleFactory({
@@ -78,6 +96,23 @@ import { SettingsUI } from '@ringcentral-integration/widgets/modules/SettingsUI'
       useFactory: ({ sdkConfig }) => new RingCentralClient(new SDK(sdkConfig)),
       deps: [{ dep: 'SdkConfig', useParam: true }],
     },
+    { provide: 'ExtensionPhoneNumber', useClass: ExtensionPhoneNumber },
+    { provide: 'ExtensionDevice', useClass: ExtensionDevice },
+    { provide: 'ForwardingNumber', useClass: ForwardingNumber },
+    { provide: 'NumberValidate', useClass: NumberValidate },
+    { provide: 'CompanyContacts', useClass: CompanyContacts },
+    { provide: 'ContactSearch', useClass: ContactSearch },
+    { provide: 'Call', useClass: Call },
+    { provide: 'Softphone', useClass: Softphone },
+    { provide: 'Ringout', useClass: Ringout },
+    { provide: 'CallingSettings', useClass: CallingSettings },
+    { provide: 'MessageStore', useClass: MessageStore },
+    { provide: 'Conversations', useClass: Conversations },
+    { provide: 'ConversationUI', useClass: ConversationUI },
+    { provide: 'ConversationsUI', useClass: ConversationsUI },
+    { provide: 'MessageSender', useClass: MessageSender },
+    { provide: 'ComposeText', useClass: ComposeText },
+    { provide: 'ComposeTextUI', useClass: ComposeTextUI },
   ],
 })
 export default class BasePhone extends RcModule {

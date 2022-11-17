@@ -8,8 +8,20 @@ import TabNavigationView from '@ringcentral-integration/widgets/components/TabNa
 import SettingsIcon from '@ringcentral-integration/widgets/assets/images/Settings.svg';
 
 import SettingsHoverIcon from '@ringcentral-integration/widgets/assets/images/SettingsHover.svg';
+import MessageIcon from '@ringcentral-integration/widgets/assets/images/Messages.svg';
+import MessageHoverIcon from '@ringcentral-integration/widgets/assets/images/MessagesHover.svg';
 
 const TABS = [
+  {
+    icon: MessageIcon,
+    activeIcon: MessageHoverIcon,
+    label: 'Messages',
+    path: '/messages',
+    noticeCounts: 0,
+    isActive: currentPath => (
+      currentPath === '/messages' || currentPath.indexOf('/conversations/') !== -1
+    ),
+  },
   {
     icon: SettingsIcon,
     activeIcon: SettingsHoverIcon,
